@@ -1,6 +1,6 @@
 # Monitoramento de animais silvestre
 #   Criado por:
-# 		-Andre Roberti Ra:
+# 		-Andre Roberti Ra:08
 # 		-Henrique Gonzales Ra:083636
 # 		-Tiago Chedraoui Silva Ra:082941
 
