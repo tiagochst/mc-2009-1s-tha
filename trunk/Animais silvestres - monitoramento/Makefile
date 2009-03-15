@@ -5,7 +5,7 @@
 # 		-Tiago Chedraoui Silva Ra:082941
 
 CC = gcc
-CFLAGS = -g -W -Wall -std=gnu99
+CFLAGS = -g -W -Wall 
 LIBS = -lm
 
 OBJS = main.c
@@ -15,6 +15,10 @@ all:
 	
 test:
 	./lab1	
+
+gdb:
+	gdb ./lab1	
+
 
 clean:
 	rm -f lab1
