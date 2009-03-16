@@ -11,7 +11,7 @@ void inserir_individuos(FILE * fpe){
   scanf(" %d",&(inserir.num_individuo));
   printf(IND_SEX);
   scanf(" %c",&(inserir.sexo));
-  fprintf(fpe,"%d | %d | %c\n",inserir.num_especie,inserir.num_individuo,inserir.sexo);
+  fprintf(fpe,"#%d#%d#%c\n",inserir.num_especie,inserir.num_individuo,inserir.sexo);
 
 
   return;
