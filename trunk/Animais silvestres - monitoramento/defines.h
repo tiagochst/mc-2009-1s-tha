@@ -6,6 +6,10 @@
 
 #define OPT_IND "Opcoes de tarefas relacionada aos dados de individuos:\n -Ver todos os individuos listados (L)\n -Inserir novo individuo(I)\n -Inserir atualizar dados de individuo(A)\n -Voltar Menu(V)\n -Sair(S)\n Por favor faça sua escolha: "
 
+
+
+
+
 typedef struct {
 
   int num_especie,num_individuo;
