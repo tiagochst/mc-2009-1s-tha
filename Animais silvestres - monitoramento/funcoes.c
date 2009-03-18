@@ -30,7 +30,7 @@ void menu_upd_esp()
 	    printf("(A)-Sexo \n");
 	    printf("(B)-Numero de identificaçao do invidividuo\n");
 	    printf("(C)-Numero de identificaçao da especie\n");
-	    printf("(D)-Sexo e -Numero de identificaçao do invidividuo\n");
+	    printf("(D)-Sexo e Numero de identificaçao do invidividuo\n");
 	    printf("(E)-Numero de identificaçao do invidividuo e Numero de identificaçao da especie\n");
 	    printf("(F)-Sexo e Numero de identificaçao do invidividuo\n");
 	    printf("(G)-Todos os dados\n ");
