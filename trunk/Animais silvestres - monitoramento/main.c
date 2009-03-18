@@ -96,14 +96,112 @@ int main()
 
 		fprintf(fpe,"#%s#%s#%c\n",t,k,inserir.sexo);
 		break;
-	      case 'G':
+
+
+	      case 'B':
+		printf(IND_INDIV);
+		scanf(" %d",&(inserir.num_individuo));
+		contador=0;
+      
+		mudar = strtok(copia, "#" );
+	 	 
+		while  (mudar != NULL)
+		  {
+		    if(contador==2){ k=mudar;}
+		    if(contador==0){ t=mudar;}
+		    mudar=strtok(NULL,"#");
+		    contador++;
+		  }
+		fseek (fpe, size-1, 0);
+		fprintf(fpe,"#%s#%d#%s\n",t,inserir.num_individuo,k);
+		break;
+
+
+	      case 'C':
+		printf(IND_INDIV);
+		scanf(" %d",&(inserir.num_especie));
+		contador=0;
+      
+		mudar = strtok(copia, "#" );
+	 	 
+		while  (mudar != NULL)
+		  {
+		    if(contador==2){ k=mudar;}
+		    if(contador==1){ t=mudar;}
+		    mudar=strtok(NULL,"#");
+		    contador++;
+		  }
+		fseek (fpe, size-1, 0);
+
+		fprintf(fpe,"#%d#%s#%s\n",inserir.num_especie,t,k);
+		break;
+
+
+	      case 'D':
+		printf(IND_SEX);
+		scanf(" %c",&(inserir.sexo));
+		printf(IND_INDIV);
+		scanf(" %d",&(inserir.num_individuo));
+		contador=0;
+      
+		mudar = strtok(copia, "#" );
+	 	 
+		while  (mudar != NULL)
+		  {
+		    if(contador==0){ t=mudar;}
+		    mudar=strtok(NULL,"#");
+		    contador++;
+		  }
+		fseek (fpe, size-1, 0);
+		fprintf(fpe,"#%s#%d#%c\n",t,inserir.num_individuo,inserir.sexo);
+		break;
+
+	      case 'E':
 		printf(IND_ESPC);
 		scanf(" %d",&(inserir.num_especie));
+
+		printf(IND_INDIV);
+		scanf(" %d",&(inserir.num_individuo));
+
+		contador=0;
+      
+		mudar = strtok(copia, "#" );
+	 	 
+		while  (mudar != NULL)
+		  {
+		    if(contador==2){ k=mudar;}
+		    mudar=strtok(NULL,"#");
+		    contador++;
+		  }
+		fseek (fpe, size-1, 0);
+		fprintf(fpe,"#%d#%d#%s\n",inserir.num_especie,inserir.num_individuo,k);
+		break;
+
+
+	      case 'F':
 		printf(IND_INDIV);
 		scanf(" %d",&(inserir.num_individuo));
 		printf(IND_SEX);
 		scanf(" %c",&(inserir.sexo));
-		fprintf(fpe,"#%d#%d#%c\n",inserir.num_especie,inserir.num_individuo,inserir.sexo);
+
+		contador=0;
+      
+		mudar = strtok(copia, "#" );
+	 	 
+		while  (mudar != NULL)
+		  {
+		    if(contador==0){ t=mudar;}
+		    mudar=strtok(NULL,"#");
+		    contador++;
+		  }
+		fseek (fpe, size-1, 0);
+		fprintf(fpe,"#%s#%d#%c\n",t,inserir.num_individuo,inserir.sexo);
+		break;
+
+
+	      case 'G':
+		fseek (fpe, size-1, 0);
+		inserir_individuos(fpe);
 		break;
 	    
 	    
