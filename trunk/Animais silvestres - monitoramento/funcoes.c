@@ -22,3 +22,17 @@ void ler_individuos(FILE * fpe){
   while (fscanf(fpe,"%c",&c)!=EOF) { printf("%c",c); }
   return;
 }
+
+void menu_upd_esp()
+{
+
+	    printf("O que deseja atualizar?\n");
+	    printf("(A)-Sexo \n");
+	    printf("(B)-Numero de identificaçao do invidividuo\n");
+	    printf("(C)-Numero de identificaçao da especie\n");
+	    printf("(D)-Sexo e -Numero de identificaçao do invidividuo\n");
+	    printf("(E)-Numero de identificaçao do invidividuo e Numero de identificaçao da especie\n");
+	    printf("(F)-Sexo e Numero de identificaçao do invidividuo\n");
+	    printf("(G)-Todos os dados\n ");
+	    return;
+}
