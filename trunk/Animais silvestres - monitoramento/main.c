@@ -14,7 +14,6 @@ int main()
   char linha[50],copia[50],*result,*mudar,*t,*k; 
   char procura[50];
   INDIVIDUOS inserir; 
-  char at_indivi[5],at_especie[5];	      
 
   long size;
  
@@ -62,8 +61,7 @@ int main()
 
       fgets(linha,50,fpe);  
       strcpy(copia,linha);
-
-	    
+   
       result = strtok( linha, "#" );
     
       contador=0;  
@@ -71,16 +69,8 @@ int main()
 	if(contador ==col){
 	  if(strcmp(result,procura)==0){
 
-	    printf("O que deseja atualizar?\n");
-
-
-	    printf("(A)-Sexo \n");
-	    printf("(B)-Numero de identificaçao do invidividuo\n");
-	    printf("(C)-Numero de identificaçao da especie\n");
-	    printf("(D)-Sexo e -Numero de identificaçao do invidividuo\n");
-	    printf("(E)-Numero de identificaçao do invidividuo e Numero de identificaçao da especie\n");
-	    printf("(F)-Sexo e Numero de identificaçao do invidividuo\n");
-	    printf("(G)-Todos os dados\n ");
+	    menu_upd_esp();
+	    
 	    printf("encontrado %s\n",result);
 	    scanf(" %c",&opcao); 
 	    
