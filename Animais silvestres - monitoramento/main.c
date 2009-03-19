@@ -11,12 +11,16 @@ int main()
 {
   FILE *fpe;
   char opcao;
-  char linha[50],copia[50],*result,*mudar,*t,*k; 
-  char procura[50],procura_esp[50],procura_indv[50];
-  INDIVIDUOS inserir; 
-  long size;
-  int contador;
-  int col;
+
+ /* linha contem linha do arquivo,e copia eh uma copia dela,
+  * result eh um apontador para a linha dividida em tres strings assim como mudar,
+  * t e k apontam para pedaços da string a serem mantidas(nao atualizadas)
+  */
+  char linha[50],copia[50],*result,*mudar,*t,*k;
+  char procura_esp[50],procura_indv[50];/*guardam valores de procura para compraçao*/
+  INDIVIDUOS inserir; /*cria individuo para guardar valor enviado pelo usuario na atualizaçao*/
+  long size;/*guarda posiçao do inicio da linha antes de pegar uma linha do arquivo */
+  int contador;/*usado para especificar na atualizaçao qual termo deve ser gurdado apos a quebra da string*/
  
   /*
    *Leitura de opçoes
