@@ -109,7 +109,7 @@ int main()
 
       printf("Qual individuo deve ter seus dados ataulizados: \n");  
       scanf("%s",procura_indv);
-      printf("Qual a sua especie?: \n");  
+      printf("Qual a sua especie? \n");  
       scanf("%s",procura_esp);
    
       while(fgetc(fpe)!=EOF){
@@ -123,7 +123,6 @@ int main()
 	while( result != NULL ) {
 	  if(strncmp (procura_esp,result,strlen(procura_esp)) ==0){
 	    result = strtok( NULL,"#" );
-	    //	    if(strcmp(result,procura_indv)==0){
 	  if(strncmp (procura_indv,result,strlen(procura_indv)) ==0){
 	      
 	      /*impressao do menu de opcoes listado em funcoes.c*/
