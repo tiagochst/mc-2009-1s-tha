@@ -7,4 +7,5 @@
 void inserir_individuos(FILE * fpe); 
 void ler_individuos(FILE * fpe); 
 void menu_upd_esp();
+void upd_ind(FILE * fpe);
 #endif
