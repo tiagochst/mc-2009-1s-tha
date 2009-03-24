@@ -142,8 +142,6 @@ void upd_ind(FILE * fpe){
 
     printf("Qual individuo deve ter seus dados ataulizados? \n");  
     scanf("%s",procura_indv);
-    printf("Qual a especie dele? \n");  
-    scanf("%s",procura_esp);
    
     while(fgetc(fpe)!=EOF){
       size=ftell (fpe);
@@ -154,8 +152,6 @@ void upd_ind(FILE * fpe){
       result = strtok( linha, "#" );
     
       while( result != NULL ) {
-	if(strncmp (procura_esp,result,strlen(procura_esp)) ==0){
-	  result = strtok( NULL,"#" );
 	  if(strncmp (procura_indv,result,strlen(procura_indv)) ==0){
 	    
 	    printf("O indivudo da especie foi encontrado,o que deseja atualizar? \n");
@@ -172,9 +168,9 @@ void upd_ind(FILE * fpe){
 	    
 	    while  (mudar != NULL)
 	      {
-		if(contador==2){ sexo=result;contador++;}
-		if(contador==1){ ind=result;contador++;}
-		if(contador==0){ esp=result;contador++;}
+		if(contador==2){ sexo=mudar;contador++;}
+		if(contador==1){ ind=mudar;contador++;}
+		if(contador==0){ esp=mudar;contador++;}
 		
 		
 		mudar=strtok(NULL,"#");
@@ -249,7 +245,7 @@ void upd_ind(FILE * fpe){
 
 	  }  
 
-	}
+
 	result=NULL;
 
       }
