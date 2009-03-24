@@ -67,6 +67,10 @@ int main()
 
     /*remover*/    
   case 'R':
+    fpe=fopen("individuos.txt","r+");
+	 remover_individuos(fpe);
+    fclose(fpe);
+
     break;
 
     /*voltar menu*/
