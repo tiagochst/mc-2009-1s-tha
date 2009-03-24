@@ -2,6 +2,87 @@
 #include <stdlib.h>
 #include "funcoes.h"
 
+void remover_individuos(FILE * fpe){
+
+  char linha[50],copia[50],*result,*mudar,*ind,*esp,*sexo;
+  char opcao; 
+  char procura_esp[50],procura_indv[50];/*guardam valores de procura para compraçao*/
+  INDIVIDUOS inserir; /*cria individuo para guardar valor enviado pelo usuario na atualizaçao*/
+  long size;/*guarda posiçao do inicio da linha antes de pegar uma linha do arquivo */
+  int contador;/*usado para especificar na atualizaçao qual termo deve ser gurdado apos a quebra da string*/
+  
+  
+  printf("O que deseja remover?\n-(A)Especie\n(B)-Individuo\n");
+  scanf(" %c",&opcao); 
+  
+  if(toupper(opcao)=='A') {
+    printf("Qual a especie que deve ser removida?: \n");  
+    scanf("%s",procura_esp);
+  
+   while(fgetc(fpe)!=EOF){
+
+      size=ftell (fpe);/*guarda posicao da linha que vai ser avalida,caso seja necessario voltar a sua posicao*/
+      fgets(linha,50,fpe);  
+      strcpy(copia,linha);/*faz uma copia da string para ser novamente avaliada(seria o mesmo que le-la novamente do arquivo)*/
+      result = strtok( linha, "#" );/*quebra a string de acordo com nosso delimitador #*/
+		
+
+
+      while( result != NULL ) {
+	/*procura na linha se a especie requerida e a existente*/
+	if(strncmp (procura_esp,result,strlen(procura_esp)) ==0){
+	    
+		/*
+	   *Retorna ao inicio da linha e escreve sobre ela os novos dados
+	   */
+	  fseek (fpe, size-1, 0);
+	  fprintf(fpe,"**                       ");
+	  break;
+	}
+	//linha procurada nao satifaz a procura
+	result=strtok(NULL,"#");
+	result=NULL;	
+      }
+    }
+  }
+
+
+  else if(toupper(opcao)=='B'){
+    
+    /*
+     * Para procurar um individuo         especifico deve entrar com seu numero de identificacao e especie
+     */
+
+    printf("Qual individuo deve ter seus dados removidos? \n");  
+    scanf("%s",procura_indv);
+   
+    while(fgetc(fpe)!=EOF){
+      size=ftell (fpe);
+
+      fgets(linha,50,fpe);  
+      strcpy(copia,linha);
+   
+      result = strtok( linha, "#" );
+    
+      while( result != NULL ) {
+	  if(strncmp (procura_indv,result,strlen(procura_indv)) ==0){
+	    
+	  	fseek (fpe, size-1, 0);
+	 	 fprintf(fpe,"**                      \n");
+		break;     
+
+		}
+
+	result=NULL;
+
+      }
+    }
+      
+  }
+return ;
+
+}
+
 void inserir_individuos(FILE * fpe){
   INDIVIDUOS inserir; 
 
@@ -26,6 +107,7 @@ void ler_individuos(FILE * fpe){
   while(fgetc(fpe)!=EOF) {
     
     fgets(linha,50,fpe);  
+if(linha[0]!='*'){
     result = strtok( linha, "#" );
     
     
@@ -39,7 +121,7 @@ void ler_individuos(FILE * fpe){
       }
     printf("--------------------------------------------------------\n");
     printf("|     %s    |     %s    |      %s       | \n",ind,esp,sexo);
-
+}
   }  
   printf("--------------------------------------------------------\n");
 
@@ -245,9 +327,9 @@ void upd_ind(FILE * fpe){
 
 	  }  
 
-
-	result=NULL;
-
+	result=strtok(NULL,"#");
+	
+	
       }
     }
       
