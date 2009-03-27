@@ -58,11 +58,11 @@ void inserir_especies(FILE * fpe){
   printf(ESP_DATA);
   scanf(" %d",&(inserir.data));
   printf(ESP_NCIE);
-  scanf(" %s",(inserir.nome_cientifico));
+  scanf(" %[^\n]",(inserir.nome_cientifico));
   printf(ESP_NPOP);
-  scanf(" %s",(inserir.nome_popular));
+  scanf(" %[^\n]",(inserir.nome_popular));
   printf(ESP_DESC);
-  scanf(" %s",(inserir.descricao));
+  scanf("%[^#]",(inserir.descricao));
   
   fprintf(fpe,"#%-10d#%255s#%-10d#%30s#%30s#%500s#\n",inserir.num_especie,inserir.caminho_foto,inserir.data,inserir.nome_cientifico,inserir.nome_popular,inserir.descricao);
 
