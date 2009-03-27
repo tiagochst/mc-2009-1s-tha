@@ -10,18 +10,134 @@
 int main()
 {
   FILE *fpe;
-  char opcao;
+  char opcao,arq;
+
+while(1){
+printf(OPT_ARQ);
+  scanf(" %c",&arq);
+
+  switch(toupper(arq)){
+
+    /*especie.txt*/
+  case 'A':
+  /*
+   *Leitura de opçoes para especie.txt
+   *L - ler conteudo do arquivo ,em que esta listado :
+   *    Indentificado unico da especie,caminho no sistema de arquivos para um arquivo 
+   *    com a foto de um individuo da especie,data,nome cientifico,nome popular e 
+   *    descrição da especie.  seu sexo e especie
+   *A - atualizar dados existentes
+   *I - inserir dados de um individuo
+   *R - remover 
+  */ 
+
+ printf(OPT_ESP);
+  scanf(" %c",&opcao);
+
+switch(toupper(opcao)){
+
+    /*Leitura*/
+  case 'L':
+
+    fpe=fopen("especies.txt","r");
+    if (fpe==NULL) {
+      printf(ERRO_ARQ);
+    }
+    else{
+      ler_especies(fpe);   
+      fclose(fpe);
+    }
+    break;
+  
+    /*insercao*/
+
+  case 'I':
+
+    fpe=fopen("especies.txt","a");
+    if(fpe==NULL)   
+      printf(ERRO_ARQ);  
+    else{
+      inserir_especies(fpe);
+    }
+ 
+    fclose(fpe);
+    break;
+  
+    /*Atualizar
+     *
+     *Consiste em procurar uma linha, copiar dados que nao serao alterados
+     *e inserir no local da linha uma nova, sobreescrevendo-a com os novos dados
+     *     
+     */
+
+  case 'A':
+   
+    fpe=fopen("especies.txt","r+");
+    if(fpe==NULL)   
+      printf(ERRO_ARQ);  
+    else{
+   // upd_ind(fpe);
+
+    }
+
+   // upd_ind(fpe);
+    fclose(fpe);
+      
+    break;
+
+    /*remover*/    
+  case 'R':
+    fpe=fopen("especies.txt","r+");
+    if(fpe==NULL)   
+      printf(ERRO_ARQ);  
+    else{
+   // upd_ind(fpe);
+
+    }
+
+	 //remover_especie(fpe);
+    fclose(fpe);
+
+    break;
+
+    /*voltar menu*/
+  case 'V':
+    break;
+
+    /*sair do programa*/
+  case 'S':
+    exit(1);
+    break;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+break;
+/*individuo.txt*/
+ case 'B':
+
 
   /*
-   *Leitura de opçoes
-   *L - ler conteudo do arquivo individuos.txt,em que esta listado os indivudos,seu sexo e especie
+   *Leitura de opçoes para individuo.txt
+   *L - ler conteudo do arquivo ,em que esta listado os indivudos,seu sexo e especie
    *A - atualizar dados existentes
    *I - inserir dados de um individuo
    *R - remover 
   */ 
   printf(OPT_IND);
-  scanf("%c",&opcao);
-  switch(toupper(opcao)){
+  scanf(" %c",&opcao);
+
+switch(toupper(opcao)){
 
     /*Leitura*/
   case 'L':
@@ -83,5 +199,13 @@ int main()
     break;
 
   }
+break;
+case 'E':
+exit(1);
+break;
+
+
+}
+}
   return 0;
 }
