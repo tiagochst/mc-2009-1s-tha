@@ -4,7 +4,7 @@
 #define ESP_FOTO "\nPor favor,entre com o caminho da foto:  "
 #define ESP_NCIE "\nPor favor,entre com o nome cientifico:  "
 #define ESP_NPOP "\nPor favor,entre com o nome popular :  "
-#define ESP_DESC "\nPor favor,entre com a descrição da espécie:  "
+#define ESP_DESC "\nPor favor,entre com a descrição da espécie,quando TERMINAR DIGITE #:  "
 
 
 /* pedidos de entrada individuos.txt*/
