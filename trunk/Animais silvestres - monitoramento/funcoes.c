@@ -903,3 +903,83 @@ void upd_cap(FILE * fpe){
       }
     } 
 }      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void exibir_dados_cap(FILE * fpe){
+  char *result,*data,*esp,*cien,*pop,*descri,*foto;
+  int contador=0;
+   char linha[100],copia[100];
+  char procura_ind[50];/*guardam valores de procura para compraçao*/
+  long size;/*guarda posiçao do inicio da linha antes de pegar uma linha do arquivo */
+  
+  
+  printf("Exibir os dados de qual individuo?: \n");  
+  scanf("%s",procura_ind);
+  
+  while(fgetc(fpe)!=EOF){
+
+    size=ftell (fpe);/*guarda posicao da linha que vai ser avalida,caso seja necessario voltar a sua posicao*/
+    fgets(linha,100,fpe);  
+    strcpy(copia,linha);/*faz uma copia da string para ser novamente avaliada(seria o mesmo que le-la novamente do arquivo)*/
+    result = strtok( linha, "#" );/*quebra a string de acordo com nosso delimitador #*/
+		
+
+
+  
+      /*procura na linha se a especie requerida e a existente*/
+      if(strncmp (procura_ind,result,strlen(procura_ind)) ==0){
+	    
+	/*
+	 *Retorna ao inicio da linha e escreve sobre ela os novos dados
+	 */
+		fseek (fpe, size-1, 0);
+ 
+ 	   fgets(linha,100,fpe);  
+  
+      result = strtok( linha, "#" );
+    
+    
+      while  (result != NULL)
+	{
+	  if(contador==5){ descri=result;contador++;}
+	  if(contador==4){ pop=result;contador++;}
+	  if(contador==3){ cien=result;contador++;}
+	  if(contador==2){ data=result;contador++;}
+	  if(contador==1){ foto=result;contador++;}
+	  if(contador==0){ esp=result;contador++;}
+	
+	  result=strtok(NULL,"#");
+	}
+      printf("--------------------------------------------------------\n");
+      //printf("|     %s    |     %s    |      %s       | \n",ind,esp,sexo);
+      printf("NUMERO DO INDIVIDUO: %s \n",esp);
+      printf("COMPRIMENTO:         %s \n",foto);
+      printf("LARGURA:             %s \n",data);
+      printf("PESO:                %s \n",cien);
+      printf("DATA DE CAPTURA:     %s \n",pop);
+      printf("LOCAL DE CAPTURA:    %s \n",descri);
+      printf("--------------------------------------------------------\n");
+ 
+
+   
+  }  
+ }
+ 
+  return;
+}
+
