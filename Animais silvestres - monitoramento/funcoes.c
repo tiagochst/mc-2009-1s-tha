@@ -82,17 +82,6 @@ int verif_ind(FILE * fpe,int procura_ind){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 /*************************************************************/
 /*               OPERACOES ESPECIES.TXT                    */
 /*************************************************************/
@@ -515,11 +504,31 @@ void remover_individuos(FILE * fpe){
 }
 
 void inserir_individuos(FILE * fpe){
-  INDIVIDUOS inserir; 
-int verifica;
+   INDIVIDUOS inserir; 
+	int verifica;
+	FILE * fpe2;
 
   printf(IND_ESPC);
   scanf(" %d",&(inserir.num_especie));
+
+	/*
+	 *Abre arquivo de especies para ver se ela ja foi cadastrada,
+	 *caso contrario nao pode ser inserido o individuo
+	 */
+	fpe2=fopen("especies.txt","a+");
+			if(fpe2==NULL)   
+				printf(ERRO_ARQ);  
+			else{
+				verifica=verif_especies(fpe2,inserir.num_especie);
+			}
+ 
+	
+	if(!verifica){
+	  printf("Especie nao cadastrada\n");
+	return;	
+	}  
+ 
+ 
   printf(IND_INDIV);
   scanf(" %d",&(inserir.num_individuo));
   
