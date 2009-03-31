@@ -221,7 +221,7 @@ int main(){
 						else{
 							upd_cap(fpe);
 						}
-						// upd_ind(fpe);
+					
 						fclose(fpe);
 						break;
 
