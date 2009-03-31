@@ -1028,15 +1028,10 @@ int verif_especies(FILE * fpe,int procura_esp){
     result = strtok( linha, "#" );/*quebra a string de acordo com nosso delimitador #*/
 		
 		esp = atoi (result);
-printf(" \n\n esp = %d proc =%d\n\n",esp,procura_esp);
-      /*procura na linha se a especie requerida e a existente*/
-   //   if(strncmp (procura_esp,result,strlen(procura_esp)) ==0){
+
 	 if(procura_esp==esp) {
 	    return 1;
 		 }
-      
-      //linha procurada nao satifaz a procura
-    
     }
  
   	 fseek (fpe, final, 0);
