@@ -134,8 +134,6 @@ void inserir_especies(FILE * fpe){
   printf(ESP_ESPC);
   scanf(" %d",&(inserir.num_especie));
   
-
-
 	verifica=verif_especies(fpe,inserir.num_especie);
 	
 	if(verifica){
@@ -154,10 +152,7 @@ void inserir_especies(FILE * fpe){
   scanf(" %[^\n]",(inserir.nome_popular));
   printf(ESP_DESC);
   scanf(" %[^\n]",(inserir.descricao));
-  printf(" %d",strlen(inserir.caminho_foto));
-  inserir.caminho_foto[strlen(inserir.caminho_foto)]='|';
-  inserir.caminho_foto[strlen(inserir.caminho_foto)+1]='\0';
-  
+  printf(" %d",strlen(inserir.caminho_foto));  
   
   fprintf(fpe,"#%-10d#%-255s#%-10d#%-30s#%-30s#%-500s#\n",inserir.num_especie,inserir.caminho_foto,inserir.data,inserir.nome_cientifico,inserir.nome_popular,inserir.descricao);
 
@@ -168,10 +163,8 @@ void inserir_especies(FILE * fpe){
 void ler_especies(FILE * fpe){
   char linha[900],*result,*data,*esp,*cien,*pop,*descri,*foto;
   int contador=0;
-  printf("--------------------------------------------------------\n");
-  //printf("|     Especie       |     caminho da foto     |      \n");
-  
-  while(fgetc(fpe)!=EOF) {
+
+ while(fgetc(fpe)!=EOF) {
     
     fgets(linha,900,fpe);  
     if(linha[0]!='*'){
@@ -191,18 +184,17 @@ void ler_especies(FILE * fpe){
 	}
       printf("--------------------------------------------------------\n");
       //printf("|     %s    |     %s    |      %s       | \n",ind,esp,sexo);
-      printf(" %s \n",esp);
-      printf(" %s \n",foto);
-      printf(" %s \n",data);
-      printf(" %s \n",cien);
-      printf(" %s \n",pop);
-      printf(" %s \n",descri);
+      printf("IDENTIFICADOR UNICO DA ESPECIE: %s \n",esp);
+      printf("CAMINHO NO SISTEMA DA FOTO DO INDIVIDUO: %s \n",foto);
+      printf("DATA: %s \n",data);
+      printf("NOME CIENTIFICO: %s \n",cien);
+      printf("NOME POPULAR: %s \n",pop);
+      printf("DESCRICAO: %s \n",descri);
       printf("--------------------------------------------------------\n");
  
 
     }
   }  
-  printf("--------------------------------------------------------\n");
 
   return;
 }
