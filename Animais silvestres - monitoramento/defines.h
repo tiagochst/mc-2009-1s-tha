@@ -4,7 +4,7 @@
 #define ESP_FOTO "\nPor favor,entre com o caminho da foto:  "
 #define ESP_NCIE "\nPor favor,entre com o nome cientifico:  "
 #define ESP_NPOP "\nPor favor,entre com o nome popular :  "
-#define ESP_DESC "\nPor favor,entre com a descrição da espécie,quando TERMINAR DIGITE #:  "
+#define ESP_DESC "\nPor favor,entre com a descrição da espécie,quando TERMINAR TECLE ENTER:  "
 
 
 /* pedidos de entrada individuos.txt*/
@@ -30,7 +30,7 @@
 #define OPT_ARQ "O que deseja manipular? :\n -(A)Especies\n -(B)Individuos\n -(C)Capturas\n -(E)Sair\n"
 #define OPT_IND "Opcoes de tarefas relacionada aos dados de individuos:\n -(L)Ver todos os individuos listados\n -(I)Inserir novo individuo\n -(A)Atualizar dados de individuo\n -(V)Voltar Menu\n -(S)Sair\n Por favor faça sua escolha: "
 #define OPT_ESP "Opcoes de tarefas relacionada aos dados de especies:\n -(L)Ver todos os especies listados e informacoes\n -(I)Inserir nova especie\n -(A)Atualizar dados de individuo\n -(V)Voltar Menu\n -(S)Sair\n Por favor faça sua escolha: "
-#define OPT_CAP "Opcoes de tarefas relacionada aos dados de captura:\n -(L)Ver todos os individuos capturados e informacoes\n -(I)Inserir nova captura\n -(A)Atualizar dados decaptura\n -(R)Remover captura\n -(V)Voltar Menu\n -(S)Sair\n Por favor faça sua escolha: "
+#define OPT_CAP "Opcoes de tarefas relacionada aos dados de captura:\n -(L)Ver todos os individuos capturados e informacoes\n -(I)Inserir nova captura\n -(A)Atualizar dados de captura\n -(R)Remover captura\n -(V)Voltar Menu\n -(S)Sair\n Por favor faça sua escolha: "
 
 
 typedef struct{
