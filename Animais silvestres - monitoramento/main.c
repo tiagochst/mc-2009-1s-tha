@@ -51,7 +51,7 @@ int main(){
 					/*insercao*/
       			case 'I':
 
-						fpe=fopen("especies.txt","a");
+						fpe=fopen("especies.txt","a+");
 						if(fpe==NULL)   
 							printf(ERRO_ARQ);  
 						else{
