@@ -1,7 +1,97 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "funcoes.h"
-int verif_especies(FILE * fpe,int procura_esp);
+
+
+
+
+int verif_especies(FILE * fpe,int procura_esp){
+
+  char linha[900],copia[900],*result;
+ int esp,final;
+   
+    final=ftell (fpe);/*guarda posicao da linha que vai ser avalida,caso seja necessario voltar a sua posicao*/
+ 	 fseek (fpe, 0, 0);
+
+  while(fgetc(fpe)!=EOF){
+   fgets(linha,900,fpe);  
+    strcpy(copia,linha);/*faz uma copia da string para ser novamente avaliada(seria o mesmo que le-la novamente do arquivo)*/
+    result = strtok( linha, "#" );/*quebra a string de acordo com nosso delimitador #*/
+		
+		esp = atoi (result);
+
+	 if(procura_esp==esp) {
+	    return 1;
+		 }
+    }
+ 
+  	 fseek (fpe, final, 0);
+ 
+  
+  return 0;
+
+}
+
+
+
+
+
+
+
+
+
+
+int verif_ind(FILE * fpe,int procura_ind){
+
+  char linha[900],copia[900],*result;
+ 	int ind,final;
+   
+    final=ftell (fpe);/*guarda posicao da linha que vai ser avalida,caso seja necessario voltar a sua posicao*/
+ 	 fseek (fpe, 0, 0);
+
+  while(fgetc(fpe)!=EOF){
+   fgets(linha,900,fpe);  
+    strcpy(copia,linha);/*faz uma copia da string para ser novamente avaliada(seria o mesmo que le-la novamente do arquivo)*/
+    result = strtok( linha, "#" );/*quebra a string de acordo com nosso delimitador #*/
+    result=strtok(NULL,"#");	
+
+		ind = atoi (result);
+
+	 if(procura_ind==ind) {
+	    return 1;
+		 }
+    }
+ 
+  	 fseek (fpe, final, 0);
+ 
+  
+  return 0;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*************************************************************/
 /*               OPERACOES ESPECIES.TXT                    */
@@ -50,11 +140,12 @@ void remover_especies(FILE * fpe){
 
 void inserir_especies(FILE * fpe){
   ESPECIES inserir; 
-int verifica;
+  int verifica;
 
   printf(ESP_ESPC);
   scanf(" %d",&(inserir.num_especie));
   
+
 
 	verifica=verif_especies(fpe,inserir.num_especie);
 	
@@ -62,6 +153,7 @@ int verifica;
 	  printf("Especie ja cadastrada\n");
 	return;	
 	} 
+
   
   printf(ESP_FOTO);
   scanf(" %s",(inserir.caminho_foto));
@@ -424,11 +516,21 @@ void remover_individuos(FILE * fpe){
 
 void inserir_individuos(FILE * fpe){
   INDIVIDUOS inserir; 
+int verifica;
 
   printf(IND_ESPC);
   scanf(" %d",&(inserir.num_especie));
   printf(IND_INDIV);
   scanf(" %d",&(inserir.num_individuo));
+  
+  	
+	verifica = verif_ind( fpe, inserir.num_individuo);
+ 
+  if(verifica){
+	  printf("Individuo ja cadastrado\n");
+	return;	
+	} 
+	
   printf(IND_SEX);
   scanf(" %c",&(inserir.sexo));
   fprintf(fpe,"#%-10d#%-10d#%c#\n",inserir.num_especie,inserir.num_individuo,inserir.sexo);
@@ -1012,31 +1114,3 @@ void exibir_dados_cap(FILE * fpe){
 
 
 
-
-
-int verif_especies(FILE * fpe,int procura_esp){
-
-  char linha[900],copia[900],*result;
- int esp,final;
-   
-    final=ftell (fpe);/*guarda posicao da linha que vai ser avalida,caso seja necessario voltar a sua posicao*/
- 	 fseek (fpe, 0, 0);
-
-  while(fgetc(fpe)!=EOF){
-   fgets(linha,900,fpe);  
-    strcpy(copia,linha);/*faz uma copia da string para ser novamente avaliada(seria o mesmo que le-la novamente do arquivo)*/
-    result = strtok( linha, "#" );/*quebra a string de acordo com nosso delimitador #*/
-		
-		esp = atoi (result);
-
-	 if(procura_esp==esp) {
-	    return 1;
-		 }
-    }
- 
-  	 fseek (fpe, final, 0);
- 
-  
-  return 0;
-
-}

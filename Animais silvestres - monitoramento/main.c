@@ -130,7 +130,7 @@ int main(){
   
 					/*insercao*/
 					case 'I':
-						fpe=fopen("individuos.txt","a");
+						fpe=fopen("individuos.txt","a+");
 						if(fpe==NULL)   
 							printf(ERRO_ARQ);  
 						else{

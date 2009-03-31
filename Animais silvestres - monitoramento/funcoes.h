@@ -11,6 +11,7 @@ void upd_ind(FILE * fpe);
 void remover_especies(FILE * fpe);
 
 
+int verif_ind(FILE * fpe,int procura_ind);
 void inserir_especies(FILE * fpe); 
 void ler_especies(FILE * fpe); 
 void menu_upd_esp();
