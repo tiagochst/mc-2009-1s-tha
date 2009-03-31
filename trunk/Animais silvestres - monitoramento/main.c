@@ -310,6 +310,16 @@ int main()
       break;
 
 
+
+
+ 	case 'F':
+      
+		fpe=fopen("capturas.data","rb");
+		exibir_dados_cap(fpe);
+      break;
+
+
+
     }
 
 
