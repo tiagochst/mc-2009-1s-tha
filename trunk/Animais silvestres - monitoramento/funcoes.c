@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "funcoes.h"
-
+int verif_especies(FILE * fpe,int procura_esp);
 
 /*************************************************************/
 /*               OPERACOES ESPECIES.TXT                    */
@@ -50,9 +50,19 @@ void remover_especies(FILE * fpe){
 
 void inserir_especies(FILE * fpe){
   ESPECIES inserir; 
+int verifica;
 
   printf(ESP_ESPC);
   scanf(" %d",&(inserir.num_especie));
+  
+
+	verifica=verif_especies(fpe,inserir.num_especie);
+	
+	if(verifica){
+	  printf("Especie ja cadastrada\n");
+	return;	
+	} 
+  
   printf(ESP_FOTO);
   scanf(" %s",(inserir.caminho_foto));
   printf(ESP_DATA);
@@ -66,6 +76,7 @@ void inserir_especies(FILE * fpe){
   printf(" %d",strlen(inserir.caminho_foto));
   inserir.caminho_foto[strlen(inserir.caminho_foto)]='|';
   inserir.caminho_foto[strlen(inserir.caminho_foto)+1]='\0';
+  
   
   fprintf(fpe,"#%-10d#%-255s#%-10d#%-30s#%-30s#%-500s#\n",inserir.num_especie,inserir.caminho_foto,inserir.data,inserir.nome_cientifico,inserir.nome_popular,inserir.descricao);
 
@@ -923,7 +934,7 @@ void upd_cap(FILE * fpe){
 void exibir_dados_cap(FILE * fpe){
   char *result,*data,*esp,*cien,*pop,*descri,*foto;
   int contador=0;
-   char linha[100],copia[100];
+   char linha[108],copia[108];
   char procura_ind[50];/*guardam valores de procura para compraçao*/
   long size;/*guarda posiçao do inicio da linha antes de pegar uma linha do arquivo */
   
@@ -934,7 +945,7 @@ void exibir_dados_cap(FILE * fpe){
   while(fgetc(fpe)!=EOF){
 
     size=ftell (fpe);/*guarda posicao da linha que vai ser avalida,caso seja necessario voltar a sua posicao*/
-    fgets(linha,100,fpe);  
+    fgets(linha,108,fpe);  
     strcpy(copia,linha);/*faz uma copia da string para ser novamente avaliada(seria o mesmo que le-la novamente do arquivo)*/
     result = strtok( linha, "#" );/*quebra a string de acordo com nosso delimitador #*/
 		
@@ -949,7 +960,7 @@ void exibir_dados_cap(FILE * fpe){
 	 */
 		fseek (fpe, size-1, 0);
  
- 	   fgets(linha,100,fpe);  
+ 	   fgets(linha,108,fpe);  
   
       result = strtok( linha, "#" );
     
@@ -983,3 +994,54 @@ void exibir_dados_cap(FILE * fpe){
   return;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int verif_especies(FILE * fpe,int procura_esp){
+
+  char linha[900],copia[900],*result;
+ int esp,final;
+   
+    final=ftell (fpe);/*guarda posicao da linha que vai ser avalida,caso seja necessario voltar a sua posicao*/
+ 	 fseek (fpe, 0, 0);
+
+  while(fgetc(fpe)!=EOF){
+   fgets(linha,900,fpe);  
+    strcpy(copia,linha);/*faz uma copia da string para ser novamente avaliada(seria o mesmo que le-la novamente do arquivo)*/
+    result = strtok( linha, "#" );/*quebra a string de acordo com nosso delimitador #*/
+		
+		esp = atoi (result);
+printf(" \n\n esp = %d proc =%d\n\n",esp,procura_esp);
+      /*procura na linha se a especie requerida e a existente*/
+   //   if(strncmp (procura_esp,result,strlen(procura_esp)) ==0){
+	 if(procura_esp==esp) {
+	    return 1;
+		 }
+      
+      //linha procurada nao satifaz a procura
+    
+    }
+ 
+  	 fseek (fpe, final, 0);
+ 
+  
+  return 0;
+
+}
