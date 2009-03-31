@@ -22,11 +22,9 @@
 #define CAP_COMP "\nPor favor,entre com o comprimento do individuo:  "
 
 
-
-
-
 /*erro na manipulação do arquivo */
 #define ERRO_ARQ "Arquivo de entrada nao existe ou sem premissao de leitura.\n"
+
 
 /* Menus de escolha do usuario*/
 #define OPT_ARQ "O que deseja manipular? :\n -(A)Especies\n -(B)Individuos\n -(C)Capturas\n -(E)Sair\n"
@@ -35,26 +33,25 @@
 #define OPT_CAP "Opcoes de tarefas relacionada aos dados de captura:\n -(L)Ver todos os individuos capturados e informacoes\n -(I)Inserir nova captura\n -(A)Atualizar dados decaptura\n -(R)Remover captura\n -(V)Voltar Menu\n -(S)Sair\n Por favor faça sua escolha: "
 
 
-
-typedef struct {
-
-  int num_especie,num_individuo;
-  char sexo;
+typedef struct{
+	
+	int num_especie,num_individuo;
+	char sexo;
 
 }INDIVIDUOS;
 
 
-typedef struct {
+typedef struct{
 
-  int num_especie,data;
-  char nome_cientifico[30],nome_popular[30],descricao[500],caminho_foto[255];
+	int num_especie,data;
+	char nome_cientifico[30],nome_popular[30],descricao[500],caminho_foto[255];
 
 }ESPECIES;
 
 
 typedef struct {
 
-  int num_individuo,compr,larg,peso,data;
-  char local[50];
+	int num_individuo,compr,larg,peso,data;
+	char local[50];
 
 }CAPTURA;
