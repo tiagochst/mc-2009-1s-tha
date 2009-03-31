@@ -22,4 +22,5 @@ void inserir_captura(FILE * fpe);
 void ler_captura(FILE * fpe); 
 
 
+int verif_especies(FILE * fpe,int procura_esp);
 #endif
